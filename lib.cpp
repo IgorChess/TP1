@@ -62,6 +62,12 @@ void Garage::Del(int index)
 void Garage::Load(std::string filename)
 {
    std::ifstream file(filename);
+
+   if (!file.is_open())
+   {
+      throw "File not open!";
+   }
+
    file >> length;
    vehicles = new BaseVehicle*[length];
    for (int i = 0; i < length; i++)
@@ -110,6 +116,12 @@ void Garage::Load(std::string filename)
 void Garage::Save(std::string filename)
 {
    std::ofstream file(filename);
+
+   if (!file.is_open())
+   {
+      throw "Incorrect name for file!";
+   }
+
    file << length << std::endl;
    for (unsigned long long i = 0; i < length; i++)
    {
@@ -195,7 +207,7 @@ std::string Car::GetData() const
 
 void Car::PrintData() const
 {
-   std::cout << "type: car, model: " << make << ", model: " << model << ", engine size: "
+   std::cout << "type: car, make: " << make << ", model: " << model << ", engine size: "
       << engineSize << ", color: " << color << ", gearbox type: " << gearboxType << std::endl;
 }
 
@@ -262,7 +274,7 @@ std::string Motorcycle::GetData() const
 
 void Motorcycle::PrintData() const
 {
-   std::cout << "type: motorcycle, model: " << make << ", model: " << model << ", engine size: "
+   std::cout << "type: motorcycle, make: " << make << ", model: " << model << ", engine size: "
       << engineSize << ", engine power: " << enginePower << ", motorcycle type: " << motorcycleType << std::endl;
 }
 
@@ -291,7 +303,7 @@ Bus::Bus()
    , seatsTotal(20)
    , destination("Moscow")
 {
-   std::cout << "Class Motorcycle() created!" << std::endl;
+   std::cout << "Class Bus() created!" << std::endl;
 }
 
 
@@ -301,7 +313,7 @@ Bus::Bus(std::string make, std::string model, int seatsPassenger, int seatsTotal
    , seatsTotal(seatsTotal)
    , destination(destination)
 {
-   std::cout << "Class Motorcycle() created!" << std::endl;
+   std::cout << "Class Bus() created!" << std::endl;
 }
 
 
@@ -311,13 +323,13 @@ Bus::Bus(const Bus& bus)
    , seatsTotal(bus.seatsTotal)
    , destination(bus.destination)
 {
-   std::cout << "Class Motorcycle() created!" << std::endl;
+   std::cout << "Class Bus() created!" << std::endl;
 }
 
 
 Bus::~Bus()
 {
-   std::cout << "Class Motorcycle() deleted!" << std::endl;
+   std::cout << "Class Bus() deleted!" << std::endl;
 }
 
 
@@ -329,7 +341,7 @@ std::string Bus::GetData() const
 
 void Bus::PrintData() const
 {
-   std::cout << "type: bus, model: " << make << ", model: " << model << ", seats passenger: "
+   std::cout << "type: bus, make: " << make << ", model: " << model << ", seats passenger: "
       << seatsPassenger << ", seats total: " << seatsTotal << ", destination: " << destination << std::endl;;
 }
 
