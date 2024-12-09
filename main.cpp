@@ -17,10 +17,6 @@ int main()
    std::cout << "10: quit from program" << std::endl;
 
    Garage* garage = new Garage();
-   Car* c1 = new Car("q", "w", 4, "e", "r");
-   Car* c2 = new Car("q", "w", 5, "e", "r");
-   garage->Add(c1);
-   garage->Add(c2);
 
    int command = 0;
    while (command != 10)
